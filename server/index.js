@@ -6,6 +6,7 @@ const cors = require("cors");
 
 //import the routes
 const userRoutes = require("./routes/User");
+const scoreRoutes = require("./routes/Score");
 
 //import the database connection
 const database = require("./config/database");
@@ -23,6 +24,7 @@ app.use(cors({ origin: "*", credentials: true }));
 
 //mounting the routes
 app.use("/api/v1/auth", userRoutes);
+app.use("/api/v1/score", scoreRoutes);
 
 app.get("/", (req, res) => {
   return res.json({
