@@ -66,3 +66,11 @@ export function login(email, password, navigate) {
     toast.dismiss(toastId);
   };
 }
+
+export function logout(navigate) {
+  return (dispatch) => {
+    dispatch(setToken(null));
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+}

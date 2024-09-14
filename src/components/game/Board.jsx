@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 import { updateScores } from "../../services/operations/scoreAPI";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Confetti from "react-confetti";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../../services/operations/authAPI";
 
 const cardImages = [
   { src: "/images/angular.png", matched: false },
@@ -90,24 +92,39 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
     shuffleCards();
   }, []);
 
+  //logout
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    dispatch(logout(navigate));
+  };
   return (
     <div className="text-richblack-50 p-6">
       {showConfetti && <Confetti />} {/* Display confetti */}
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-3xl font-bold text-caribbeangreen-100">
-          Memory Match
-        </h1>
-        <div className="flex items-center space-x-4">
+      <div className="flex items-center justify-between mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+        {/* Turns display */}
+        <div className="flex flex-col items-center">
+          <p className="text-2xl font-bold text-caribbeangreen-100">Turns</p>
+          <p className="text-4xl font-extrabold text-gray-800">{turns}</p>
+        </div>
+
+        {/* Buttons */}
+        <div className="flex space-x-4">
           <button
             onClick={shuffleCards}
             className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
             New game
           </button>
-          <p className="text-lg font-semibold">Turns: {turns}</p>
+          <button
+            onClick={logoutHandler}
+            className="px-4 py-2 bg-pink-200 text-white rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-red-300"
+          >
+            Quit game
+          </button>
         </div>
       </div>
-      <div className="card-grid grid grid-cols-4 gap-4 h-[500px]">
+      <div className="card-grid grid grid-cols-4 gap-4 h-[500px] -mt-2">
         {cards.map((card) => (
           <Card
             key={card.id}
