@@ -10,4 +10,5 @@ export const scoreEndpoints = {
   GET_ALL_SCORES_API: BASE_URL + "/score/getAllScores",
   GET_HIGHEST_SCORE: BASE_URL + "/score/getHighestScore",
   UPDATE_SCORE_API: BASE_URL + "/score/updateScore",
+  GET_LEADERBOARD_API: BASE_URL + "/score/getLeaderboard",
 };
