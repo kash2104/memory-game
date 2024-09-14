@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import PrivateRoute from "./components/auth/PrivateRoute";
+import LeaderBoard from "./components/game/LeaderBoard";
 
 function App() {
   return (
@@ -18,6 +19,15 @@ function App() {
           element={
             <PrivateRoute>
               <Home />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/leader-board"
+          element={
+            <PrivateRoute>
+              <LeaderBoard />
             </PrivateRoute>
           }
         />
