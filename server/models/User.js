@@ -19,8 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   scores: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Score",
+      type: Number,
     },
   ],
   token: {
