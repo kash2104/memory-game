@@ -120,7 +120,7 @@ const LoginForm = () => {
 
       <Link to="/login">
         <p className="mt-1 ml-auto max-w-max text-xs text-blue-100">
-          Don't have an account? Login
+          Already have an account? Login
         </p>
       </Link>
     </form>
