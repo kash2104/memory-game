@@ -112,6 +112,8 @@ export const getLeaderboard = async (token) => {
     console.log("get leaderboard API response is ", response);
 
     result = response?.data?.data;
+
+    result.sort((a, b) => a.user.highestScore - b.user.highestScore);
   } catch (error) {
     console.log("get leaderboard API error is ", error);
     toast.error(

@@ -13,6 +13,7 @@ const LeaderBoard = () => {
       setLoading(true);
       try {
         const result = await getLeaderboard(token);
+        console.log("Leaderboard result is ", result);
         setLeaders(result);
       } catch (error) {
         console.log("Error while fetching leaderboard", error);
