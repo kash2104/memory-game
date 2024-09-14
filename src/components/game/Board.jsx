@@ -43,6 +43,7 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
 
   // Handle choice
   const handleChoice = (card) => {
+    if (card.matched || card === choiceOne) return;
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
