@@ -23,6 +23,8 @@ const LeaderBoard = () => {
     fetchLeaders();
   }, []);
 
+  const topLeaders = leaders.slice(0, 10);
+
   return (
     <div className="flex flex-col items-center w-11/12 mx-auto bg-richblack-900 mt-6">
       <h1 className="text-3xl font-bold text-yellow-50 mb-6">LeaderBoard</h1>
@@ -31,7 +33,7 @@ const LeaderBoard = () => {
         <p className="text-lg text-white">Loading...</p>
       ) : (
         <div className="w-full max-w-md bg-richblack-700 p-6 rounded-lg shadow-lg">
-          {leaders.map((leader, index) => (
+          {topLeaders.map((leader, index) => (
             <div
               key={index}
               className="flex justify-between items-center border-b border-richblack-600 py-4"

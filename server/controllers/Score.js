@@ -95,7 +95,8 @@ exports.getLeaderboard = async (req, res) => {
         path: "user",
         select: { email: 1, highestScore: 1 },
       })
-      .sort({ highestScore: 1 }) // Sort by highestScore in ascending order (lowest score first)
+      .sort({ highestScore: 1 })
+      .limit(10)
       .exec();
 
     res.status(200).json({
