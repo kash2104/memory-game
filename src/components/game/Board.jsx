@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Confetti from "react-confetti";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../services/operations/authAPI";
+import { useWindowSize } from "react-use"; // Import useWindowSize hook
 
 const cardImages = [
   { src: "/images/angular.png", matched: false },
@@ -23,6 +24,9 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false); // State for confetti
+
+  // Get the window size
+  const { width, height } = useWindowSize();
 
   // Shuffle cards
   const shuffleCards = () => {
@@ -98,8 +102,10 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
   };
 
   return (
-    <div className="text-richblack-50 p-6">
-      {showConfetti && <Confetti />} {/* Display confetti */}
+    <div className="text-richblack-50 p-6 relative">
+      {showConfetti && (
+        <Confetti width={width} height={height} /> // Set Confetti width and height dynamically
+      )}
       <div className="flex flex-col sm:flex-row items-center justify-between mb-6 p-4 bg-gray-100 rounded-lg shadow-md space-y-4 sm:space-y-0 sm:space-x-4">
         {/* Turns display */}
         <div className="flex flex-col items-center sm:items-start">
