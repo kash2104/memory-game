@@ -8,7 +8,7 @@ import LeaderBoard from "./components/game/LeaderBoard";
 
 function App() {
   return (
-    <div className="w-screen min-h-screen bg-[#000814] flex flex-col">
+    <div className="w-screen min-h-screen bg-[#000814] flex flex-col overflow-x-hidden">
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />

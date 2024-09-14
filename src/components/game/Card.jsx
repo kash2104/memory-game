@@ -9,7 +9,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
 
   return (
     <div
-      className={`relative card w-44 h-44 cursor-pointer`}
+      className={`relative card w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 cursor-pointer`}
       onClick={handleClick}
     >
       <div
@@ -20,12 +20,13 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
         <img
           src={`${card.src}`}
           alt="card"
+          loading="lazy"
           className="w-full h-full object-cover border-2 border-richblack-5 rounded-sm front"
         />
-
         <img
           src="/images/js.png"
           alt="cover"
+          loading="lazy"
           className="w-full h-full object-cover border-2 border-richblack-5 rounded-sm back"
         />
       </div>

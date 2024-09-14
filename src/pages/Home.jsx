@@ -39,24 +39,22 @@ const Home = () => {
   }, [setAllScores]);
 
   const lastTenScores = allScores.slice(0, 10);
+
   return (
-    <div className="flex space-x-8 p-6">
-      <div className="w-[300px] ml-6 mt-8 p-6 bg-richblack-25 rounded-lg shadow-md">
-        {/* Container for Highest Score */}
+    <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 px-4 py-6 lg:px-8 lg:py-10">
+      <div className="w-full lg:w-[300px] mx-auto lg:mx-0 p-6 bg-richblack-25 rounded-lg shadow-md">
+        {/* Highest Score */}
         <div className="flex justify-between items-center border-b-2 pb-4 mb-6">
           <p className="text-lg font-semibold text-gray-700">Highest Score</p>
           <div className="text-2xl font-bold text-green-500">
             {highestScore}
           </div>
         </div>
-
-        {/* Container for Previous Scores */}
+        {/* Previous Scores */}
         <div>
           <p className="text-lg font-semibold text-gray-700 mb-4">
             Previous Scores
           </p>
-
-          {/* Loading State */}
           {loading ? (
             <p className="text-gray-500">Loading...</p>
           ) : (

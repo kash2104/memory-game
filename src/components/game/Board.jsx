@@ -32,7 +32,6 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
 
     setChoiceOne(null);
     setChoiceTwo(null);
-
     setCards(shuffledCards);
     setTurns(0);
     setShowConfetti(false); // Hide confetti when starting a new game
@@ -77,7 +76,6 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
 
         if (result.highestScore > highScore) {
           setShowConfetti(true); // Show confetti for new high score
-          // setTimeout(() => setShowConfetti(false), 5000);
         }
 
         setHighestScore(result.highestScore);
@@ -98,38 +96,39 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
   const logoutHandler = () => {
     dispatch(logout(navigate));
   };
+
   return (
     <div className="text-richblack-50 p-6">
       {showConfetti && <Confetti />} {/* Display confetti */}
-      <div className="flex items-center justify-between mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+      <div className="flex flex-col sm:flex-row items-center justify-between mb-6 p-4 bg-gray-100 rounded-lg shadow-md space-y-4 sm:space-y-0 sm:space-x-4">
         {/* Turns display */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center sm:items-start">
           <p className="text-2xl font-bold text-caribbeangreen-100">Turns</p>
           <p className="text-4xl font-extrabold text-gray-800">{turns}</p>
         </div>
 
         {/* Buttons */}
-        <div className="flex space-x-4">
+        <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
           <Link to="/leader-board">
-            <button className="px-4 py-2 bg-richblue-100 text-white rounded-lg shadow-md hover:bg-richblue-200 focus:outline-none focus:ring-2 focus:ring-richblue-400">
+            <button className="px-4 py-2 w-full sm:w-auto bg-richblue-100 text-white rounded-lg shadow-md hover:bg-richblue-200 focus:outline-none focus:ring-2 focus:ring-richblue-400">
               Leader Board
             </button>
           </Link>
           <button
             onClick={shuffleCards}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="px-4 py-2 w-full sm:w-auto bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
-            New game
+            New Game
           </button>
           <button
             onClick={logoutHandler}
-            className="px-4 py-2 bg-pink-200 text-white rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="px-4 py-2 w-full sm:w-auto bg-pink-200 text-white rounded-lg shadow-md hover:bg-pink-400 focus:outline-none focus:ring-2 focus:ring-red-300"
           >
-            Quit game
+            Quit Game
           </button>
         </div>
       </div>
-      <div className="card-grid grid grid-cols-4 gap-4 h-[500px] -mt-2">
+      <div className="card-grid grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {cards.map((card) => (
           <Card
             key={card.id}
