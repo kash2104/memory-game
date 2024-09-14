@@ -2,7 +2,7 @@ import React from "react";
 import Template from "../components/auth/Template";
 
 function Login() {
-  return <Template text="Welcome again" formType="login" />;
+  return <Template text="Login to play" formType="login" />;
 }
 
 export default Login;
