@@ -1,3 +1,4 @@
+const Score = require("../models/Score");
 const User = require("../models/User");
 
 exports.getHighestScore = async (req, res) => {
@@ -56,6 +57,12 @@ exports.updateScores = async (req, res) => {
 
     if (turns < user.highestScore || !user.highestScore) {
       user.highestScore = turns;
+
+      const score = await Score.findOneAndUpdate(
+        { user: user._id },
+        { highestScore: turns },
+        { upsert: true, new: true }
+      );
     }
 
     user.scores.unshift(turns);
@@ -76,6 +83,30 @@ exports.updateScores = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to update the scores",
+      error: error.message,
+    });
+  }
+};
+
+exports.getLeaderboard = async (req, res) => {
+  try {
+    const scores = await Score.find({})
+      .populate({
+        path: "user",
+        select: { email: 1, highestScore: 1 },
+      })
+      .exec();
+
+    res.status(200).json({
+      success: true,
+      data: scores,
+    });
+  } catch (error) {
+    console.log("Error while getting leaderboard", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to retrieve leaderboard",
       error: error.message,
     });
   }
