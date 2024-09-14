@@ -3,7 +3,7 @@ import Card from "./Card";
 import { updateScores } from "../../services/operations/scoreAPI";
 import { useDispatch, useSelector } from "react-redux";
 import Confetti from "react-confetti";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../services/operations/authAPI";
 
 const cardImages = [
@@ -110,6 +110,11 @@ const Board = ({ setHighestScore, setAllScores, highScore }) => {
 
         {/* Buttons */}
         <div className="flex space-x-4">
+          <Link to="/leader-board">
+            <button className="px-4 py-2 bg-richblue-100 text-white rounded-lg shadow-md hover:bg-richblue-200 focus:outline-none focus:ring-2 focus:ring-richblue-400">
+              Leader Board
+            </button>
+          </Link>
           <button
             onClick={shuffleCards}
             className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
